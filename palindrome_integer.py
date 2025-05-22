@@ -24,14 +24,12 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         reverse_num = 0
-        if (x < 0 or (x % 10 == 0 and x != 0)):
+        if (x < 0 or (x % 10 == 0 and x != 0)): #exclude negative, numbers ending in zero (0%10 is 0) and zero (zero is a palindrome)
             return False
-        while x > reverse_num:
+        while x > reverse_num: # checks half of the value
             reverse_num = reverse_num * 10 + x % 10
             x //= 10
-        return x == reverse_num or x == reverse_num//10
-
-
+        return x == reverse_num or x == reverse_num//10 #if integer length is odd
 
 # Time complexity : O(log10(n)).
 #  We divided the input by 10 for every iteration, so the time complexity is O(log10(n))
